@@ -33,7 +33,8 @@ import board.TestLevel;
  */
 public class MainApplication extends javax.swing.JFrame
 {
-
+	public static double VERSION = 1.1;
+	
     /**
      * Main function of the Application
      */
@@ -419,5 +420,5 @@ public class MainApplication extends javax.swing.JFrame
     /**
      * Change this string when creating a new version
      */
-    static final String VERSION_NUMBER_STRING = "1.2.43 Extra";
+    static final String VERSION_NUMBER_STRING = "1.2.43 Extra ("+MainApplication.VERSION+")";
 }
