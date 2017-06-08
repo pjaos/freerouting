@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "*******************************************************************"
+echo "* freeroute installation complete.                                *"
+echo "* You may start FreeRoute by entering 'freeroute' from the        *"
+echo "* command line or searching for FreeRoute in the Unity interface. *"
+echo "* The freeroute.jar file has been installed into /usr/bin to      *"
+echo "* allow FreeRoute to be started from KiCad.                       *"
+echo "*******************************************************************"

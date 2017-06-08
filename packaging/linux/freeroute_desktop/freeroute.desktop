@@ -1,0 +1,18 @@
+[Desktop Entry]
+GenericName=YView
+Name=Freeroute
+MimeType=text/plain;
+Exec=/usr/local/bin/freeroute
+X-KDE-StartupNotify=true
+X-KDE-HasTempFileOption=true
+Icon=/usr/local/bin/freeroute_files/freeroute.png
+Type=Application
+Terminal=false
+Categories=GNOME;GTK;Development;
+X-Ayatana-Desktop-Shortcuts=X-OpenNewWindow
+
+[X-OpenNewWindow Shortcut Group]
+Name=New Window
+Exec=/usr/local/bin/freeroute
+TargetEnvironment=Unity
+

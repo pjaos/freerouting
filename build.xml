@@ -1,32 +1,77 @@
-<project default="jar">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="freerouting">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../usr/lib/eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <property name="lib.dir" value="lib"/>
+    <path id="freerouting.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="../../git_repos/freerouting/lib/jh-2.0.jar"/>
+        <pathelement location="../../git_repos/freerouting/lib/jnlp-1.2.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
     <target name="clean">
-        <delete dir="build"/>
+        <delete dir="bin"/>
     </target>
-
-    <target name="compile">
-        <mkdir dir="build/classes"/>
-        <javac destdir="build/classes" classpath="lib/jh.jar:lib/javaws.jar" target="1.5" source="1.5" debug="yes">
-		<src path="src"/>
-	</javac>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="freerouting.classpath"/>
+        </javac>
     </target>
-
-	<target name="jar" depends="compile">
-
-<!-- TODO: zip files right into the jar? -->
-		<copy todir="build/classes/">
-			<fileset dir="src" includes="**/*.properties"/>
-		</copy>
-
-		<jar destfile="build/FreeRouting.jar" basedir="build/classes">
-            		<manifest>
-                		<attribute name="Main-Class" value="gui.MainApplication"/>
-            		</manifest>
-
-			<fileset dir="build/classes" includes="**/*.class **/*.properties"/>
-			<zipfileset src="lib/jh.jar" includes="**/*.class"/>
-			<zipfileset src="lib/javaws.jar" includes="**/*.class"/>
-		</jar>
-	</target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Main (3)">
+        <java classname="com.sun.javaws.Main" failonerror="true" fork="yes">
+            <classpath refid="freerouting.classpath"/>
+        </java>
+    </target>
+    <target name="MainApplication">
+        <java classname="gui.MainApplication" failonerror="true" fork="yes">
+            <classpath refid="freerouting.classpath"/>
+        </java>
+    </target>
+    
+    <target name="create_jar">
+        <jar destfile="freeroute.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="gui.MainApplication"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="bin"/>
+            <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+        </jar>
+    </target>
 
 
 </project>
