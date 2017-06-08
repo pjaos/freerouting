@@ -21,7 +21,7 @@ freeroute:
 	mkdir -p $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/local/bin/freeroute_files
 	mkdir -p $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/share/applications
 	cp ../../freeroute.jar $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/local/bin/freeroute_files
-	ln -s $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/local/bin/freeroute_files/freeroute.jar $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/bin/freeroute.jar
+	cp ../../freeroute.jar $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/bin
 	#unity desktop and icon files
 	cp freeroute_desktop/freeroute.png $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/local/bin/freeroute_files
 	cp freeroute_desktop/freeroute.desktop $(OUTPUT_ROOT_PATH)/freeroute/linux/usr/share/applications
