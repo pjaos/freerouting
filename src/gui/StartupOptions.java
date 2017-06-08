@@ -56,9 +56,26 @@ public class StartupOptions {
             } else if (p_args[i].startsWith("-test")) {
                 test_version_option = true;
             }
+            if (p_args[i].equals("-h") || p_args[i].equals("--help")) {
+            	usage();
+            	System.exit(0);
+            }
         }
     }
 
+    /**
+     * @brief Show command line usage to the user.
+     */
+    private void usage() {
+    	System.out.println("Usage");
+    	System.out.println("-de     :	The design file to be imported (dsn suffix).");
+    	System.out.println("-di     :	The design directory.");
+    	System.out.println("-l      :	The locale to be used.");
+    	System.out.println("-s      :	Set the session file option.");
+    	System.out.println("-w      :	Set the webstart option.");
+    	System.out.println("--test  :	Set the test option.");
+    }
+    
     public boolean getWebstartOption() {
         return webstart_option;
     }
