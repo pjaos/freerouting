@@ -33,13 +33,11 @@ public class BoardHandlingImpl implements IBoardHandling {
     /**
      * Gets the routing board of this board handling.
      */
-    @Override
     public RoutingBoard get_routing_board()
     {
         return this.board;
     }
 
-    @Override
     public Settings get_settings() {
         return settings;
     }
@@ -47,7 +45,6 @@ public class BoardHandlingImpl implements IBoardHandling {
     /**
      * Initializes the manual trace widths from the default trace widths in the board rules.
      */
-    @Override
     public void initialize_manual_trace_half_widths()
     {
         for (int i = 0; i < settings.manual_trace_half_width_arr.length; ++i)
@@ -56,7 +53,6 @@ public class BoardHandlingImpl implements IBoardHandling {
         }
     }
 
-    @Override
     public void create_board(IntBox p_bounding_box, LayerStructure p_layer_structure, PolylineShape[] p_outline_shapes, String p_outline_clearance_class_name, BoardRules p_rules, Communication p_board_communication, TestLevel p_test_level) {
         if (this.board != null)
         {
@@ -84,7 +80,6 @@ public class BoardHandlingImpl implements IBoardHandling {
         this.settings = new Settings(this.board, this.logfile);
     }
 
-    @Override
     public Locale get_locale() {
         return java.util.Locale.ENGLISH;
     }
