@@ -20,6 +20,9 @@
  */
 package gui;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import board.TestLevel;
 
 /**
@@ -39,6 +42,22 @@ public class MainApplication extends javax.swing.JFrame
         Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler());
         StartupOptions startupOptions = StartupOptions.parse(p_args);
 
+        try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         if (!(OFFLINE_ALLOWED || startupOptions.webstart_option))
         {
             Runtime.getRuntime().exit(1);
