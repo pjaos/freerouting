@@ -5,15 +5,15 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="freerouting">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../usr/lib/eclipse"/>
+    <property name="ECLIPSE_HOME" value="/home/pja/local/applications/eclipse/eclipse"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
     <property name="lib.dir" value="lib"/>
     <path id="freerouting.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../git_repos/freerouting/lib/jh-2.0.jar"/>
-        <pathelement location="../../git_repos/freerouting/lib/jnlp-1.2.jar"/>
+        <pathelement location="lib/jh-2.0.jar"/>
+        <pathelement location="lib/jnlp-1.2.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
